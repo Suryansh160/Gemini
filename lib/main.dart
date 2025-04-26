@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
-import '/consts.dart';
+import 'home_page.dart';
+import 'consts.dart';
 
 void main() {
   Gemini.init(apiKey: GEMINI_API__KEY);
@@ -12,8 +13,6 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(body: Center(child: Text('Hello World!'))),
-    );
+    return MaterialApp(home: HomePage());
   }
 }
