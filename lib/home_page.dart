@@ -26,14 +26,20 @@ class _HomePageState extends State<HomePage> {
   final ChatUser _AIUser = ChatUser(
     id: '2',
     firstName: 'Gemini',
-    profileImage:
-        'https://images.seeklogo.com/logo-png/61/1/gemini-icon-logo-png_seeklogo-611605.png',
+    profileImage: 'assets/logo.png',
   );
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Gemini'), backgroundColor: Color(0xFF303134)),
+      backgroundColor: Color(0xFF1B1C1D),
+      appBar: AppBar(
+        leading: Icon(Icons.menu),
+        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.apps))],
+        title: Text('Gemini'),
+        backgroundColor: Color(0xFF303134),
+        foregroundColor: Colors.white,
+      ),
       body: _buildUI(),
     );
   }
@@ -41,10 +47,33 @@ class _HomePageState extends State<HomePage> {
   Widget _buildUI() {
     return DashChat(
       inputOptions: InputOptions(
+        sendButtonBuilder: (send) {
+          return IconButton(
+            onPressed: send,
+            icon: Icon(Icons.send, color: Colors.white),
+          );
+        },
+        inputTextStyle: TextStyle(color: Colors.white),
+        inputDecoration: InputDecoration(
+          hintText: "Ask Gemini",
+          filled: true,
+          fillColor: Color(0xFF1B1C1D),
+          hintStyle: TextStyle(color: Colors.grey),
+
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(30),
+            borderSide: BorderSide(color: Colors.grey),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(30),
+            borderSide: BorderSide(color: Colors.grey),
+          ),
+        ),
+
         trailing: [
           IconButton(
             onPressed: _sendMediaMessage,
-            icon: const Icon(Icons.image),
+            icon: Icon(Icons.image, color: Colors.grey),
           ),
         ],
       ),
